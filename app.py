@@ -17,7 +17,7 @@ scored_df = pd.read_csv("Scores_data.csv")
 cv = CountVectorizer(max_features = 5000, stop_words ="english")
 vectors = cv.fit_transform(new_df["tags"]).toarray()
 
-similarity = cosine_similarity(vectors)
+similarity = pickle.load(open("similarity.pkl","rb"))
 
 def recommend(movie):
     movie_index = new_df[new_df["title"] == movie].index[0]
