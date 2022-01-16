@@ -7,15 +7,10 @@ Created on Sun Jan 16 12:55:15 2022
 
 import streamlit as st
 import pickle
-from sklearn.metrics.pairwise import cosine_similarity
-from sklearn.feature_extraction.text import CountVectorizer
 import pandas as pd
 
 new_df = pd.read_csv("final_data.csv")
 scored_df = pd.read_csv("Scores_data.csv")
-
-cv = CountVectorizer(max_features = 5000, stop_words ="english")
-vectors = cv.fit_transform(new_df["tags"]).toarray()
 
 similarity = pickle.load(open("similarity.pkl","rb"))
 
